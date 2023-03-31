@@ -9,10 +9,14 @@ import os
 api = KaggleApi()
 api.authenticate()
 
-api.competition_download_file('jigsaw-unintended-bias-in-toxicity-classification', 'all_data.csv', path='././data/')
+# Gets the absolute path to the data folder.
+dirname = os.path.dirname(__file__)
+filename = os.path.join(dirname, '..', '..', 'data', '')
 
-zf = ZipFile('././data/all_data.csv.zip')
-zf.extractall('././data/')
+api.competition_download_file('jigsaw-unintended-bias-in-toxicity-classification', 'all_data.csv', path=filename)
+
+zf = ZipFile(filename + 'all_data.csv.zip')
+zf.extractall(filename)
 zf.close()
 
-os.remove('././data/all_data.csv.zip')
+os.remove(filename + 'all_data.csv.zip')
