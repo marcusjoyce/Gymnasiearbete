@@ -13,10 +13,10 @@ api.authenticate()
 dirname = os.path.dirname(__file__)
 filename = os.path.join(dirname, '..', '..', 'data', '')
 
-api.competition_download_file('jigsaw-unintended-bias-in-toxicity-classification', 'all_data.csv', path=filename)
+api.competition_download_file('jigsaw-unintended-bias-in-toxicity-classification', 'train.csv', path=filename)
 
-zf = ZipFile(filename + 'all_data.csv.zip')
+zf = ZipFile(filename + 'train.csv.zip')
 zf.extractall(filename)
 zf.close()
 
-os.remove(filename + 'all_data.csv.zip')
+os.remove(filename + 'train.csv.zip')
